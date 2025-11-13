@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>💥ศึกชิงจ้าวยุทธ์</title>
+
+  <!-- ฟอนต์ Itim จาก Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -ms-touch-action: manipulation;
+      touch-action: manipulation;
+      background: #fff;
+      font-family: 'Itim', sans-serif;
+    }
+
+    /* container ของ iframe */
+    .iframe-wrap {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%; height: 100%;
+      border: 0;
+      background: transparent;
+    }
+
+    .iframe-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .iframe-wrap iframe::-webkit-scrollbar { display: none; }
+    .iframe-wrap iframe { -ms-overflow-style: none; scrollbar-width: none; }
+
+    @media (orientation: portrait) {.iframe-wrap { height: 100vh; }}
+    @media (orientation: landscape) {.iframe-wrap { height: 100vh; }}
+
+    /* หน้ารอโหลด */
+    #loading-screen {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, #dbeafe, #fef9c3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease;
+    }
+
+    #loading-screen img {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 20px;
+    }
+
+    .loading-text {
+      font-size: 1.3rem;
+      color: #2563eb;
+    }
+  </style>
+</head>
+<body>
+  <!-- หน้ารอโหลด -->
+  <div id="loading-screen">
+    <img src="https://cdn.pixabay.com/animation/2022/12/05/15/23/15-23-06-837_512.gif" alt="กำลังโหลด..." />
+    <div class="loading-text">กำลังโหลด... กรุณารอสักครู่ 💫</div>
+  </div>
+
+  <!-- Iframe -->
+  <div class="iframe-wrap">
+    <iframe
+      id="game-frame"
+      src="https://script.google.com/macros/s/AKfycbzMWtYDsvzzA3OnlSvrnPijsydCVCYdvIVHjNQP3RXTgmH22b8cJxbzoE3aBBZa_q4f/exec"
+      title="Embedded App"
+      allowfullscreen
+      sandbox="allow-forms allow-scripts allow-same-origin allow-popups"
+      referrerpolicy="no-referrer"
+      scrolling="no"
+    ></iframe>
+  </div>
+
+  <script>
+    const iframe = document.getElementById("game-frame");
+    const loading = document.getElementById("loading-screen");
+
+    iframe.addEventListener("load", () => {
+      loading.style.opacity = "0";
+      setTimeout(() => loading.style.display = "none", 600);
+    });
+  </script>
+</body>
+</html>
